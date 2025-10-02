@@ -1,13 +1,11 @@
-function geometricMean(numbers) {
-    if (!Array.isArray(numbers) || numbers.length === 0) {
-        throw new Error("Введіть масив чисел довжиною > 0");
+function factorial(n) {
+    if (n < 0) throw new Error("Факторіал визначений тільки для невід'ємних чисел");
+    if (n === 0) return 1;
+    let result = 1;
+    for (let i = 1; i <= n; i++) {
+        result *= i;
     }
-    let product = 1;
-    for (let num of numbers) {
-        if (num < 0) throw new Error("Середнє геометричне визначене тільки для невід'ємних чисел");
-        product *= num;
-    }
-    return Math.pow(product, 1 / numbers.length);
+    return result;
 }
 
-module.exports = { geometricMean };
+module.exports = { factorial };
