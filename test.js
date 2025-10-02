@@ -1,12 +1,17 @@
-const { add, subtract } = require('./math');
+const { geometricMean } = require('./math');
+
 function assertEqual(actual, expected, message) {
-    if (actual !== expected) {
-        console.error(` ${message} | Очікувалось: ${expected}, Отримано: ${actual}`);
+    if (Math.abs(actual - expected) > 0.0001) {
+        console.error(`${message} | Очікувалось: ${expected}, Отримано: ${actual}`);
         process.exit(1);
     } else {
-        console.log(` ${message}`);
+        console.log(`${message}`);
     }
 }
-assertEqual(add(2, 3), 5, 'Сума 2 + 3 = 5');
-assertEqual(subtract(10, 4), 6, 'Різниця 10 - 4 = 6');
-console.log("Усі тести пройдено успішно!");
+
+// Тести середнього геометричного
+assertEqual(geometricMean([1, 1, 1]), 1, 'Середнє геометричне [1,1,1] = 1');
+assertEqual(geometricMean([2, 8]), 4, 'Середнє геометричне [2,8] = 4');
+assertEqual(geometricMean([1, 3, 9, 27]), 6.4807, 'Середнє геометричне [1,3,9,27] = 6.4807');
+
+console.log("Усі тести пройдено!");
